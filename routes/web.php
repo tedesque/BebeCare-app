@@ -2,23 +2,28 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ChildController;
-use App\Models\Child;
+use App\Http\Controllers\GuardianController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
+
 use Inertia\Inertia;
 
 Route::get('/children', [ChildController::class, 'show']);
 Route::put('/children', [ChildController::class, 'update']);
 Route::post('/children', [ChildController::class, 'store']);
 
-// Route::get('/', function () {
-//     return Inertia::render('Welcome', [
-//         'canLogin' => Route::has('login'),
-//         'canRegister' => Route::has('register'),
-//         'laravelVersion' => Application::VERSION,
-//         'phpVersion' => PHP_VERSION,
-//     ]);
-// });
+Route::get('/guardian', [GuardianController::class, 'show']);
+Route::put('/guardian', [GuardianController::class, 'update']);
+Route::post('/guardian', [GuardianController::class, 'store']);
+
+Route::get('/', function () {
+    return Inertia::render('Welcome', [
+        'canLogin' => Route::has('login'),
+        'canRegister' => Route::has('register'),
+        'laravelVersion' => Application::VERSION,
+        'phpVersion' => PHP_VERSION,
+    ]);
+});
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
